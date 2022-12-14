@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerWalk : MonoBehaviour
 {
-    public int playerSpeed; 
+    public int playerSpeed;
+    [SerializeField] private PhotonView view;
+    [SerializeField] private Rigidbody rigid;
 
     // Start is called before the first frame update
     void Start()
@@ -15,9 +18,14 @@ public class PlayerWalk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (view.IsMine)
         {
-            transform.position = transform.position + Camera.main.transform.forward * playerSpeed * Time.deltaTime;
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.position = transform.position + Camera.main.transform.forward * playerSpeed * Time.deltaTime;
+                //rigid.AddForce(100 * Time.deltaTime, 0, 0);
+            }
         }
+        
     }
 }
