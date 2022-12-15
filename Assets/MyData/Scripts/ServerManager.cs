@@ -34,7 +34,7 @@ public class ServerManager : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
         Debug.Log("Odaya bağlanıldı");
         Debug.Log("Karakter oluşturuluyor...");
-        PhotonNetwork.Instantiate("Peasant Girl 1", new Vector3(0,1,0), Quaternion.identity, 0, null);
+        PhotonNetwork.Instantiate("Player", new Vector3(0,1,0), Quaternion.identity, 0, null);
     }
 
     // Update is called once per frame
