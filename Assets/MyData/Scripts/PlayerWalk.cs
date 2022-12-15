@@ -35,6 +35,10 @@ public class PlayerWalk : MonoBehaviour
             {
                 animator.SetTrigger("Clap");
             }
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                rigid.AddForce(0, 100000 * Time.deltaTime,0,ForceMode.Impulse);
+            }
         }
         
     }

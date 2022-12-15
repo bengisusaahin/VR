@@ -34,7 +34,7 @@ public class ServerManager : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
         Debug.Log("Odaya bağlanıldı");
         Debug.Log("Karakter oluşturuluyor...");
-        PhotonNetwork.Instantiate("Player", new Vector3(0,1,0), Quaternion.identity, 0, null);
+        PhotonNetwork.Instantiate("Player", new Vector3(4,0,4), Quaternion.identity, 0, null);
     }
 
     // Update is called once per frame
