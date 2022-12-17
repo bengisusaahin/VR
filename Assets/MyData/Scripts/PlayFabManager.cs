@@ -5,6 +5,7 @@ using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class PlayFabManager : MonoBehaviour
 {
@@ -15,14 +16,45 @@ public class PlayFabManager : MonoBehaviour
     public InputField email;
     public InputField password;
     public InputField DisplayName;
+    public PhotonView view;
 
-    private void Update()
+    private void Start()
     {
-        if(playerName != null)
-        {
-            playerName.text = name;
+            if (SceneManager.GetActiveScene().buildIndex == 3)
+            {
+                if (view.IsMine)
+                {
+
+                    GetUserName();
+            }
         }
+
+
+
     }
+
+    public void GetUserName()
+    {
+        var request = new GetAccountInfoRequest();
+
+        // Make the API call
+        PlayFabClientAPI.GetAccountInfo(request, (result) =>
+        {
+            // Access the user's display name from the result object
+            string userName = result.AccountInfo.TitleInfo.DisplayName;
+            if (playerName != null)
+            {
+                playerName.text = userName;
+            }
+            // Use the user name in your script
+            Debug.Log("User name: " + userName);
+        }, (error) =>
+        {
+            // There was an error.
+            Debug.LogError(error.GenerateErrorReport());
+        });
+    }
+
     public void RegisterButton() //Checks if the password is less than 6 characters and creates a request.
     {
         if (password.text.Length < 6)
@@ -65,8 +97,7 @@ public class PlayFabManager : MonoBehaviour
         string name = null;
         if (result.InfoResultPayload.PlayerProfile != null)
         {
-            name = result.InfoResultPayload.PlayerProfile.PlayerId;
-            
+            name = result.InfoResultPayload.PlayerProfile.DisplayName;
         }
         if (name == null)
         {

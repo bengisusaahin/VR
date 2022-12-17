@@ -39,14 +39,19 @@ public class ServerManager : MonoBehaviourPunCallbacks
         if (Change.manSelected) 
         {
             myPlayer =(GameObject) PhotonNetwork.Instantiate("man", new Vector3(4, 0, 4), Quaternion.identity, 0, null);
+
         }
         else
         {
             myPlayer = (GameObject)PhotonNetwork.Instantiate("Player", new Vector3(4, 0, 4), Quaternion.identity, 0, null);
 
+
         }
         myPlayer.GetComponent<PlayerWalk>().enabled = true;
         myPlayer.transform.Find("Head").gameObject.SetActive(true);
+        myPlayer.transform.Find("playerName").gameObject.GetComponent<PlayFabManager>().enabled=true;
+
+
     }
 
     // Update is called once per frame

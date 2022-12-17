@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: -5905525791576184007}
   - component: {fileID: -6740784556903638774}
   - component: {fileID: -603781444779588974}
+  - component: {fileID: 4558267365469902031}
   m_Layer: 0
   m_Name: man
   m_TagString: Untagged
@@ -252,6 +253,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: -5905525791576184007}
   - {fileID: -6740784556903638774}
+  - {fileID: 4558267365469902031}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -299,6 +301,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 126494ae2a10a34499272ed97a6c9f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4558267365469902031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500085044845708570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 2
+    Name: IsWalking
+  - Type: 9
+    SynchronizeType: 2
+    Name: Clap
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!1 &1620830011295699262
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,8 +979,10 @@ GameObject:
   - component: {fileID: 86165180078248564}
   - component: {fileID: 1544913157058390053}
   - component: {fileID: 4490777325665505003}
+  - component: {fileID: 3773484858580892335}
+  - component: {fileID: 844409744160058993}
   m_Layer: 0
-  m_Name: manName
+  m_Name: playerName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -968,7 +996,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3713188989816722367}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.678, y: 2.45, z: 0.03}
+  m_LocalPosition: {x: 0.678, y: 2.45, z: 0.594}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 2277290659810893728}
@@ -1026,7 +1054,7 @@ TextMesh:
   m_CharacterSize: 1
   m_LineSpacing: 1
   m_Anchor: 0
-  m_Alignment: 0
+  m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 0
   m_FontStyle: 0
@@ -1042,7 +1070,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3713188989816722367}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ffe59013259fd6a4baf84005c57cf481, type: 3}
   m_Name: 
@@ -1054,6 +1082,46 @@ MonoBehaviour:
   email: {fileID: 0}
   password: {fileID: 0}
   DisplayName: {fileID: 0}
+  view: {fileID: 3773484858580892335}
+--- !u!114 &3773484858580892335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713188989816722367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 844409744160058993}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &844409744160058993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713188989816722367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &3716931252871934566
 GameObject:
   m_ObjectHideFlags: 0
@@ -1364,7 +1432,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6502854756359690179}
   m_LocalRotation: {x: -0, y: -0.9988808, z: -0, w: 0.047298256}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.132}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7025433206023194133}
@@ -1373,7 +1441,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.013, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!20 &8937756251115778297
