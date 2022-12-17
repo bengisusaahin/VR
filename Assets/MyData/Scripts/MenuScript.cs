@@ -20,7 +20,7 @@ public class MenuScript : MonoBehaviour
 
     public void PlayButton()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(6);
     }
     public void QuitButton()
     {

@@ -11,10 +11,18 @@ public class PlayFabManager : MonoBehaviour
     public GameObject rowPrefab;
     public Transform rowsParent;
     public Text messageText;
+    public TextMesh playerName;
     public InputField email;
     public InputField password;
     public InputField DisplayName;
 
+    private void Update()
+    {
+        if(playerName != null)
+        {
+            playerName.text = name;
+        }
+    }
     public void RegisterButton() //Checks if the password is less than 6 characters and creates a request.
     {
         if (password.text.Length < 6)
@@ -57,7 +65,8 @@ public class PlayFabManager : MonoBehaviour
         string name = null;
         if (result.InfoResultPayload.PlayerProfile != null)
         {
-            name = result.InfoResultPayload.PlayerProfile.DisplayName;
+            name = result.InfoResultPayload.PlayerProfile.PlayerId;
+            
         }
         if (name == null)
         {

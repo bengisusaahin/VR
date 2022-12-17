@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class ServerManager : MonoBehaviourPunCallbacks
 {
+    GameObject myPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,7 @@ public class ServerManager : MonoBehaviourPunCallbacks
         base.OnJoinedLobby();
         Debug.Log("Lobiye bağlanıldı");
         Debug.Log("Odaya bağlanılıyor");
-        PhotonNetwork.JoinOrCreateRoom("Odaismi", new RoomOptions { MaxPlayers = 2, IsOpen = true, IsVisible = true }, TypedLobby.Default);
+        PhotonNetwork.JoinOrCreateRoom("Odaismi", new RoomOptions { MaxPlayers = 5, IsOpen = true, IsVisible = true }, TypedLobby.Default);
 
     }
 
@@ -34,7 +36,15 @@ public class ServerManager : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
         Debug.Log("Odaya bağlanıldı");
         Debug.Log("Karakter oluşturuluyor...");
-        GameObject myPlayer =(GameObject) PhotonNetwork.Instantiate("Player", new Vector3(4, 0, 4), Quaternion.identity, 0, null);
+        if (Change.manSelected) 
+        {
+            myPlayer =(GameObject) PhotonNetwork.Instantiate("man", new Vector3(4, 0, 4), Quaternion.identity, 0, null);
+        }
+        else
+        {
+            myPlayer = (GameObject)PhotonNetwork.Instantiate("Player", new Vector3(4, 0, 4), Quaternion.identity, 0, null);
+
+        }
         myPlayer.GetComponent<PlayerWalk>().enabled = true;
         myPlayer.transform.Find("Head").gameObject.SetActive(true);
     }
@@ -44,4 +54,5 @@ public class ServerManager : MonoBehaviourPunCallbacks
     {
         
     }
+    
 }

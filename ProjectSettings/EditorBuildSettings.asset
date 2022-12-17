@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MyData/Scenes/EnterUsername.unity
     guid: 7401562aaf6c52f47905167553b66795
+  - enabled: 1
+    path: Assets/MyData/Scenes/ChooseCharacter.unity
+    guid: 3d3fd2eaf1cf75c4dbb8d11e5a3264df
   m_configObjects: {}
