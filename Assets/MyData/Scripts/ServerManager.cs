@@ -34,7 +34,9 @@ public class ServerManager : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
         Debug.Log("Odaya bağlanıldı");
         Debug.Log("Karakter oluşturuluyor...");
-        PhotonNetwork.Instantiate("Player", new Vector3(4,0,4), Quaternion.identity, 0, null);
+        GameObject myPlayer =(GameObject) PhotonNetwork.Instantiate("Player", new Vector3(4, 0, 4), Quaternion.identity, 0, null);
+        myPlayer.GetComponent<PlayerWalk>().enabled = true;
+        myPlayer.transform.Find("Head").gameObject.SetActive(true);
     }
 
     // Update is called once per frame
